@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -19,14 +20,16 @@ def home(request):
     return render(request, 'App/home.html', context)
 
 
-def market(request):
-    foodTypes = FoodTypes.objects.all()
-    goodsList = Goods.objects.filter(categoryid=104749)
-    context = {'pagetitle': '闪购', 'foodTypes': foodTypes, 'goodsList': goodsList}
-    return render(request, 'App/market.html', context)
+# def market(request):
+#     foodTypes = FoodTypes.objects.all()
+#     goodsList = Goods.objects.filter(categoryid=104749)
+#     context = {'pagetitle': '闪购', 'foodTypes': foodTypes, 'goodsList': goodsList}
+#     # return HttpResponse(context)
+#     return render(request, 'App/market.html', context)
+    # return render(request, 'App/market.html', context)
 
 
-def marketCategory(request, foodtype, childcid, ording):
+def market(request, foodtype, childcid, ording):
     foodTypes = FoodTypes.objects.all()
     if ording == '0':
         orderRule = 'id'

@@ -11,7 +11,7 @@
         <div class="aside">
             {% for foodType in foodTypes %}
                 <span class="yellowLine"></span>
-                <a href="{% url 'axf:marketcategory' foodType.typeid 0 0 %}">
+                <a href="{% url 'axf:market' foodType.typeid 0 0 %}">
                     <div class="typeFood">{{ foodType.typename }}</div>
                 </a>
 
@@ -47,7 +47,7 @@
                     {% for child in childType %}
                         <div>
                             <a id='btn'
-                               href="{% url 'axf:marketcategory' foodType child.childType 0 %}"><span>{{ child.childName }}</span></a>
+                               href="{% url 'axf:market' foodType child.childType 0 %}"><span>{{ child.childName }}</span></a>
                         </div>
                     {% endfor %}
                 </div>
@@ -58,8 +58,8 @@
                 <div>
                     <a href="" class="sort"><span>综合排序</span></a>
                     <a href="" class="sort"><span>销量排序</span></a>
-                    <a href="{% url 'axf:marketcategory' foodType childcid 3 %}" class="sort"><span>价格最低</span></a>
-                    <a href="{% url 'axf:marketcategory' foodType childcid 1 %}" class="sort"><span>价格最高</span></a>
+                    <a href="{% url 'axf:market' foodType childcid 3 %}" class="sort"><span>价格最低</span></a>
+                    <a href="{% url 'axf:market' foodType childcid 1 %}" class="sort"><span>价格最高</span></a>
                 </div>
             </div>
         </div>
