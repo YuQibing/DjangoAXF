@@ -1,0 +1,70 @@
+{% extends 'App/base.html' %}
+{% load static %}
+
+{% block personResource %}
+    <link rel="stylesheet" href="{% static 'market/css/market.css' %}">
+    <script src="{% static 'market/js/market.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div id="market">
+        <div class="aside">
+            {% for foodType in foodTypes %}
+                <span class="yellowLine"></span>
+                <a href="{% url 'axf:marketcategory' foodType.typeid 0 0 %}">
+                    <div class="typeFood">{{ foodType.typename }}</div>
+                </a>
+
+            {% endfor %}
+        </div>
+
+        <div class="nav">
+            <div class="navSelect floatClear">
+                <div class="leftChildType">全部类型<span class="glyphicon glyphicon-menu-down"
+                                                     aria-hidden="true"></span></div>
+                <div class="rightOrder">综合排序<span class="glyphicon glyphicon-menu-down"
+                                                  aria-hidden="true"></span></div>
+            </div>
+            <div class="listBox">
+                <span class="list"></span>
+                <span class="list"></span>
+            </div>
+            <ul>
+                {% for goods in goodsList %}
+                    <li id="goodsList">
+                        <div>
+                            <img src="{{ goods.productimg }}">
+                            <p>{{ goods.productname }}</p>
+                            <p>{{ goods.price }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+
+            <div id="typediv">
+                <div>
+                    {% for child in childType %}
+                        <div>
+                            <a id='btn'
+                               href="{% url 'axf:marketcategory' foodType child.childType 0 %}"><span>{{ child.childName }}</span></a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <div id="sortdiv">
+                <div>
+                    <a href="" class="sort"><span>综合排序</span></a>
+                    <a href="" class="sort"><span>销量排序</span></a>
+                    <a href="{% url 'axf:marketcategory' foodType childcid 3 %}" class="sort"><span>价格最低</span></a>
+                    <a href="{% url 'axf:marketcategory' foodType childcid 1 %}" class="sort"><span>价格最高</span></a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
