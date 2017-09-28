@@ -3,12 +3,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <link rel="stylesheet" href="{% static 'base/css/swiper.css' %}">
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'base/css/reset.css' %}">
-
 
 
     <script type="text/javascript" src="{% static 'base/js/jquery.js' %}"></script>
@@ -19,7 +19,7 @@
     <title></title>
     {% block personResource %}{% endblock %}
     <style>
-        header{
+        header {
             font-size: 20px;
             text-align: center;
             line-height: 1.5rem;
@@ -27,38 +27,37 @@
     </style>
 </head>
 <body>
-   <header>{{ pagetitle }}</header>
-    <div>
-        {% block content %}
+<header>{{ pagetitle }}</header>
+<div>
+    {% block content %}
 
-        {% endblock %}
-    </div>
-    <footer>
-        <a href="{% url 'axf:home' %}" class="home">
-            <dl>
-                <dt><span></span></dt>
-                <dd>首页</dd>
-            </dl>
-        </a>
-         <a href="/axf/market/104749/0/0" class="market">
-            <dl>
-                <dt><span></span></dt>
-                <dd>闪购</dd>
-            </dl>
-        </a>
-         <a href="{% url 'axf:cart' %}" class="cart">
-            <dl>
-                <dt><span></span></dt>
-                <dd>购物车</dd>
-            </dl>
-        </a>
-         <a href="{% url 'axf:mine' %}" class="mine">
-            <dl>
-                <dt><span></span></dt>
-                <dd>我的</dd>
-            </dl>
-        </a>
-    </footer>
-
+    {% endblock %}
+</div>
+<footer>
+    <a href="{% url 'axf:home' %}" class="home">
+        <dl>
+            <dt><span></span></dt>
+            <dd>首页</dd>
+        </dl>
+    </a>
+    <a href="/axf/market/104749/0/0" class="market">
+        <dl>
+            <dt><span></span></dt>
+            <dd>闪购</dd>
+        </dl>
+    </a>
+    <a href="{% url 'axf:cart' %}" class="cart">
+        <dl>
+            <dt><span></span></dt>
+            <dd>购物车</dd>
+        </dl>
+    </a>
+    <a href="{% url 'axf:mine' %}" class="mine">
+        <dl>
+            <dt><span></span></dt>
+            <dd>我的</dd>
+        </dl>
+    </a>
+</footer>
 </body>
 </html>
