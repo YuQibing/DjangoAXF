@@ -1,7 +1,11 @@
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.urls import reverse
+
 from App.models import *
 
 
@@ -63,3 +67,73 @@ def cart(request):
 def mine(request):
     context = {'pagetitle': '我的'}
     return render(request, 'App/mine.html', context)
+
+
+def user(request):
+    accountCookie = request.COOKIES.get('user')
+    if accountCookie:
+        user = User.objects.filter(userAccount=accountCookie)[0]
+        context = {'account': user}
+        response = render(request, 'App/mine.html', context)
+        return response
+    else:
+        return render(request, 'App/user.html')
+
+
+def checkAccount(request):
+    account = request.GET.get('account')
+    length = len(User.objects.filter(userAccount=account))
+    if length == 0:
+        context = {'status': '用户可以注册'}
+    else:
+        context = {'status': '用户已经存在'}
+
+    return JsonResponse(context)
+
+def createAccount(request):
+    account = request.GET.get('userAccount')
+    passwd = request.GET.get('userPassword')
+    user = User.createuser(account, passwd)
+    user.save()
+    context = {'account': user}
+    # response = HttpResponseRedirect(reverse('axf:mine', user))
+    # response.set_cookie('user', account, max_age=1000)
+    # return render(request, 'App/mine.html', context)
+    response = render(request, 'App/mine.html', context)
+    return response
+
+
+def login(request):
+    response = render(request, 'App/login.html')
+    response.delete_cookie('user')
+    return response
+
+
+def doLogin(request):
+    account = request.GET.get('userAccount')
+    passwd = request.GET.get('userPassword')
+    user = User.objects.all()
+    count = 0
+    for i in user:
+        if i.userAccount == account:
+            if i.userPasswd == passwd:
+                context = {'account': i}
+                # request.session['user'] = context
+                # response = HttpResponseRedirect(reverse('axf:mine', i))
+                # response.set_cookie('user', account, max_age=1000)
+                # return response
+                response = render(request, 'App/mine.html', context)
+                response.set_cookie(key='user', value=account, max_age=1000)
+                return response
+
+            else:
+                return HttpResponse('password error')
+
+        else:
+            count += 1
+            if count == len(user):
+                return HttpResponse('no user')
+            else:
+                continue
+
+

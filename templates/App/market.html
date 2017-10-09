@@ -36,6 +36,9 @@
                             <img src="{{ goods.productimg }}">
                             <p>{{ goods.productname }}</p>
                             <p>{{ goods.price }}</p>
+                            <button class="subShopping">-</button>
+                            <num>{{ goods.num|default:0 }}</num>
+                            <button class="addShopping">+</button>
                         </div>
                     </li>
                 {% endfor %}

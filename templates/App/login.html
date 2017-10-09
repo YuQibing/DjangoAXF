@@ -16,7 +16,7 @@
     <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
     <script type="text/javascript" src="{% static 'base/js/swiper.js' %}"></script>
     <script type="text/javascript" src="{% static 'base/js/base.js' %}"></script>
-    <script type="text/javascript" src="{% static 'mine/js/user.js' %}"></script>
+{#    <script type="text/javascript" src="{% static 'mine/js/user.js' %}"></script>#}
 
     <title></title>
     <style>
@@ -31,13 +31,13 @@
 <header><a href="{% url 'axf:home' %}"><span id='back' class="glyphicon glyphicon-menu-left"
                                              aria-hidden="true"></span></a></header>
 
-<form id="userBox" action="{% url 'axf:createaccount' %}">
+<form id="userBox" action="{% url 'axf:dologin' %}">
     <div class="userTheme"><input class="userData" id="userAccount" name="userAccount" type="text" placeholder="请输入用户名"><span id="status"></span><br /></div>
     <div class="userTheme"><input class="userData" id="userPassword" name="userPassword" type="password" placeholder="请输入密码"><br /></div>
 
     <div id="btnUser">
-        <button id="btn" type="submit" >注册</button><br />
-        <button id="btn" type="button" ><a href="{% url 'axf:login' %}" >登录</a></button>
+{#        <button id="btn" type="button" >注册</button><br />#}
+        <button id="btn" type="submit" >登录</button>
     </div>
 </form>
 

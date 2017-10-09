@@ -1,11 +1,13 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Wheel(models.Model):
     img = models.CharField(max_length=200)
     name = models.CharField(max_length=20)
     trackid = models.CharField(max_length=20)
+
     class Meta:
         db_table = 'axf_wheel'
 
@@ -32,9 +34,9 @@ class Shop(models.Model):
     img = models.CharField(max_length=150)
     name = models.CharField(max_length=20)
     trackid = models.CharField(max_length=20)
+
     class Meta:
         db_table = 'axf_shop'
-
 
 
 class MainShow(models.Model):
@@ -64,6 +66,7 @@ class MainShow(models.Model):
     longname3 = models.CharField(max_length=50)
     price3 = models.CharField(max_length=10)
     marketprice3 = models.CharField(max_length=10)
+
     class Meta:
         db_table = 'axf_mainshow'
 
@@ -73,6 +76,7 @@ class FoodTypes(models.Model):
     typename = models.CharField(max_length=20)
     typesort = models.IntegerField()
     childtypenames = models.CharField(max_length=150)
+
     class Meta:
         db_table = 'axf_foodtypes'
 
@@ -108,8 +112,34 @@ class Goods(models.Model):
     storenums = models.IntegerField()
     # 销量
     productnum = models.IntegerField()
+
     class Meta():
         db_table = 'axf_goods'
 
 
+class User(models.Model):
+    # 用户账号，要唯一
+    userAccount = models.CharField(max_length=20, unique=True)
+    # 密码
+    userPasswd = models.CharField(max_length=20)
+    # 昵称
+    userName = models.CharField(max_length=20)
+    # 手机号
+    userPhone = models.CharField(max_length=20)
+    # 地址
+    userAdderss = models.CharField(max_length=100)
+    # 头像路径
+    userImg = models.CharField(max_length=150)
+    # 等级
+    userRank = models.IntegerField()
+    # touken验证值，每次登陆之后都会更新
+    userToken = models.CharField(max_length=50)
 
+    class Meta():
+        db_table = 'axf_user'
+
+    @classmethod
+    def createuser(cls, account, passwd, name=' ', phone=' ', address=' ', img=' ', rank=1, token=1):
+        u = cls(userAccount=account, userPasswd=passwd, userName=name, userPhone=phone, userAdderss=address,
+                userImg=img, userRank=rank, userToken=token)
+        return u

@@ -3,6 +3,7 @@
  */
 
 $(function () {
+    //排序
     $('.leftChildType').click(function () {
         $('#typediv').css('display', 'block')
         $('#sortdiv').css('display', 'none')
@@ -18,4 +19,6 @@ $(function () {
     $('#sortdiv').click(function () {
         $('#sortdiv').css('display', 'none')
     })
+
+    //
 })

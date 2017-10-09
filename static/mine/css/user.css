@@ -1,0 +1,40 @@
+#userBox{
+    margin-top: 3rem;
+    /*overflow: auto;*/
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.userTheme{
+    width: 10rem;
+    height: 1rem;
+    border-bottom: 1px solid grey;
+    background: white;
+}
+
+.userData{
+    width: 6rem;
+    height: 1rem;
+    margin: auto 0;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+#btnUser{
+    width: 100%;
+    /*background: pink;*/
+}
+
+#btn{
+    width: 9rem;
+    margin: 0.1rem 0.5rem;
+    background: yellow;
+    border-radius: 0.3rem;
+}
+
+#status{
+    float: right;
+    margin: 0px;
+    line-height: 1rem;
+}
